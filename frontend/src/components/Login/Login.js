@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
-    <div className="login-container">
-      <Link to='/'>Back to Home</Link>
+    <div classname="Login-container">
+      <div className="text-container">
+      <h1>test</h1>
+        
+      </div>
+        
+      <div className="footer">
+        <Link to='/'>Back to Home</Link>
+      </div>
     </div>
   )
 }

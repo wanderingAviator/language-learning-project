@@ -1,0 +1,43 @@
+body {
+    background:  rgb(246, 220, 255);
+    font-family: Arial, Impact,;
+    display: flex;
+    /*height: 100vh;*/
+    margin: 0;
+    padding: 0;
+    /*background-attachment: fixed;*/
+    flex-direction: column;
+}
+.text-container h1 {
+    height: 60px; 
+    display: flex;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.header {
+    background: rgb(209, 121, 226);
+    font-size: 30px;
+    width: 100%;
+  }
+
+  .text-container {
+    background-color: rgba(0, 0, 0, 0.26);
+    margin-right: 65%;
+    padding:10px;
+    font-size: 10px;
+    width: 35%;
+    white-space: nowrap;
+}
+
+  .footer {
+    background: rgb(209, 121, 226);
+    font-size: 30px;
+    width: 100%;
+    position:absolute;
+    width:100%;
+    bottom:0;
+  }
+
+
