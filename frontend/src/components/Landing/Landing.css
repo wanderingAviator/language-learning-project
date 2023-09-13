@@ -1,0 +1,22 @@
+body{
+    background-color: azure;
+}
+
+.landing-container{
+    display:flex;
+    flex-direction:row;
+    background-color: rgba(0, 0, 0, 0.322);
+    width: 40%;
+    height: 100vh;
+}
+
+.text-container h1{
+    background-color: rgba(0, 0, 0, 0.26);
+    margin-left: 65%;
+    padding:10px;
+    margin-top: 100%;
+    font-size: 50px;
+    width: 100%;
+    white-space: nowrap;
+}
+
