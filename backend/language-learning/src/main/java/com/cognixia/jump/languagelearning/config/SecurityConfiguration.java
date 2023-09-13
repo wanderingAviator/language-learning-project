@@ -51,7 +51,7 @@ public class SecurityConfiguration {
 	        .requestMatchers("/swagger-ui/**").permitAll()
 //	        .requestMatchers(HttpMethod.POST, "/api/statistics/").hasRole("ADMIN") // Allow only ADMIN to POST 
 	        .requestMatchers("/api/user").permitAll()// allow creation of      
-	        .anyRequest().authenticated()
+	        .anyRequest().permitAll()
 	    .and()
 	        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

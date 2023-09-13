@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.cognixia.jump.languagelearning.model.User;
-import com.cognixia.jump.languagelearning.repository.UserRepository;
+import com.cognixia.jump.languagelearning.repo.UserRepo;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	UserRepository repo;
+	UserRepo repo;
 
 	// method will by called by Spring Security when a request comes in
 	// credentials (username + password) passed through the request will be loaded
