@@ -10,8 +10,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.cognixia.jump.service.MyUserDetailsService;
-import com.cognixia.jump.util.JwtUtil;
+//import com.cognixia.jump.languagelearning.service.MyUserDetailsService;
+import com.cognixia.jump.languagelearning.util.JwtUtil;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
