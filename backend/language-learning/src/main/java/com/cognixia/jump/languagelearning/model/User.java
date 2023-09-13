@@ -107,6 +107,11 @@ public class User implements Serializable {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", language=" + language + ", role=" + role + "]";
 	}
+
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 
 	
