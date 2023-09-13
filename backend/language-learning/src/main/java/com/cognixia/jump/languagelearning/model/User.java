@@ -108,6 +108,8 @@ public class User implements Serializable {
 				+ ", language=" + language + ", role=" + role + "]";
 	}
 	
+	
+	
 
 	
 	
