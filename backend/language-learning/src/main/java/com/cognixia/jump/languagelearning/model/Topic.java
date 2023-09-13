@@ -30,10 +30,10 @@ public class Topic {
 	private List<FillQuestion> fill_questions;
 	
 	@OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-	private List<MatchQuestion> match_questions;
+	private List<MatchingQuestion> match_questions;
 	
 	public Topic(Integer id, @NotBlank String name, Language language, List<FillQuestion> fill_questions,
-			List<MatchQuestion> match_questions) {
+			List<MatchingQuestion> match_questions) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -69,10 +69,10 @@ public class Topic {
 	public void setFill_questions(List<FillQuestion> fill_questions) {
 		this.fill_questions = fill_questions;
 	}
-	public List<MatchQuestion> getMatch_questions() {
+	public List<MatchingQuestion> getMatch_questions() {
 		return match_questions;
 	}
-	public void setMatch_questions(List<MatchQuestion> match_questions) {
+	public void setMatch_questions(List<MatchingQuestion> match_questions) {
 		this.match_questions = match_questions;
 	}
 	
