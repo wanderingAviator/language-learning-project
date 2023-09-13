@@ -10,9 +10,9 @@ const Landing = () => {
 
       <div className="text-container">
         <h1>BIG OL TITLE</h1>
-        <p>this is a catchy, super-fancy tagline</p>
-        <button>Login</button>
-        <button>Signup</button> 
+        <p>this is a catchy, super-fancy tagline yaaaaaay wait what happens it its super long</p>
+        <a href="http://localhost:3000/login"><button >Login</button></a> <br/>
+        <a href="http://localhost:3000/signup"><button>Signup</button></a>
       </div>
         
       <div className="image-container">
