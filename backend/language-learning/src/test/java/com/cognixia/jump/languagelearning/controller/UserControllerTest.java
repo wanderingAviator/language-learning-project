@@ -7,8 +7,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.cognixia.jump.languagelearning.model.User;
 import com.cognixia.jump.languagelearning.model.User.Role;
@@ -74,6 +73,7 @@ public class UserControllerTest {
 				.andExpect(status().isCreated());
 
 		verify(userService, times(1)).createUser(Mockito.any(User.class));
+//		verifyNoInteractions(userService);
 	}
 	
 	
@@ -81,7 +81,6 @@ public class UserControllerTest {
 	public void testGetUserById() throws Exception{
 		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
-		String toJsonUser = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mockUser);
 		final String uri =  STARTING_URI + "/user/" + userId;
 		
 		
@@ -98,16 +97,16 @@ public class UserControllerTest {
 	
 	@Test
 	public void testUpdateUser() throws Exception {
-		int userId = 2;
+		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
 		String toJsonUser = objectMapper.writeValueAsString(mockUser);
 		
 		when(userService.updateUser(Mockito.any(User.class))).thenReturn(mockUser);
 		
-		mvc.perform(post(STARTING_URI + "/user")
+		mvc.perform(put(STARTING_URI + "/user")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(toJsonUser))
-		.andExpect(status().isCreated());
+		.andExpect(status().isOk());
 		
 		
 		verify(userService, times(1)).updateUser(Mockito.any(User.class));
@@ -118,7 +117,6 @@ public class UserControllerTest {
 	public void testDeleteUser() throws Exception{
 		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
-		String toJsonUser = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mockUser);
 		
 		when(userService.deleteUser(userId)).thenReturn(mockUser);
 		
