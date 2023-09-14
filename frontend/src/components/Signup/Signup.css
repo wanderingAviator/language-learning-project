@@ -1,0 +1,53 @@
+.signup-container{
+    display:flex;
+    flex-direction:row;
+    background-color: rgb(209, 121, 226);
+    width: 40%;
+    height: 100vh;
+}
+
+.left-bar h1 {  
+    background-color: rgba(0, 0, 0, 0.26);
+    margin-top:200px;
+    margin-left:250px;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    padding:10px;
+    width: 50%;
+    white-space: nowrap;
+}
+
+.labelbox label {
+    margin-left: 46%;
+    font-size: 20px;
+    color: rgb(29, 0, 48);
+}
+
+.labelbox input {
+    width:40%;
+    height: 20px;
+    margin-bottom: 10px;
+    margin-left: 46%;
+}
+
+.buttonsection{
+    margin-top: 25px;
+}
+
+.buttonsection button{
+    width:30%;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 45%;
+    font-size: 20px;
+}
+
+.signup-image img{
+    margin-left: 444px;
+    margin-top: 100px;
+    width: 750px;
+    height: 750px;
+    border: 2px solid black;
+}
+
