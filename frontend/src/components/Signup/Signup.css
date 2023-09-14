@@ -33,14 +33,19 @@
 
 .buttonsection{
     margin-top: 25px;
+    flex-direction: row;
+    display:flex;
 }
 
 .buttonsection button{
-    width:30%;
-    height: 30px;
+    width:150px;
+    height: 40px;
     margin-top: 20px;
-    margin-left: 45%;
+    margin-left: 40%;
     font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border: 2px solid black;
+    color: white;
 }
 
 .signup-image img{
