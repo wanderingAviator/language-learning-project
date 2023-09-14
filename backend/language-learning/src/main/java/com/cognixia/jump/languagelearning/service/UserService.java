@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.cognixia.jump.languagelearning.exception.ResourceNotFoundException;
 import com.cognixia.jump.languagelearning.exception.UserExistsException;
 import com.cognixia.jump.languagelearning.model.User;
+import com.cognixia.jump.languagelearning.model.User.Role;
 import com.cognixia.jump.languagelearning.repo.UserRepo;
 
 @Service
@@ -29,6 +30,9 @@ public class UserService {
 		Optional<User> exists = userRepo.findByUsername(user.getUsername());
 		if(exists.isPresent()) throw new UserExistsException(user.getUsername());
 		
+		user.setId(null);
+		user.setRole(Role.ROLE_USER);
+		user.setIsEnabled(true);
 		User created = userRepo.save(user);
 		
 		return created;
@@ -39,7 +43,9 @@ public class UserService {
 		boolean exists = userRepo.existsById(user.getId());
 		if(!exists) throw new ResourceNotFoundException("User", user.getId());
 		
+		
 		User created = userRepo.save(user);
+		
 		
 		return created;
 	}

@@ -53,7 +53,7 @@ public class UserController {
 	public ResponseEntity<?> deleteUserById(@PathVariable int id) throws ResourceNotFoundException{
 		
 		User deleted = userService.deleteUser(id);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(deleted);
+		return ResponseEntity.status(HttpStatus.OK).body(deleted);
 	}
 	
 	

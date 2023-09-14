@@ -43,7 +43,7 @@ public class User implements Serializable {
 	@Column(nullable = false, columnDefinition="default 'ROLE_USER'")
 	private Role role;
 	
-	@Column(columnDefinition="default 'true'")
+	@Column(columnDefinition="BOOLEAN DEFAULT true")
 	private Boolean isEnabled;
 
 	public User() {}
@@ -57,7 +57,7 @@ public class User implements Serializable {
 		this.password = password;
 		this.language = language;
 		this.role = role;
-		this.isEnabled = isEnabled;
+		this.isEnabled = true;
 	}
 
 	public Integer getId() {
@@ -107,6 +107,14 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
+	public boolean isEnabled() {
+		return true;
+	}
+	
+	public void setIsEnabled(Boolean isEnabled) {
+		this.isEnabled = isEnabled;
+	}
 
 	@Override
 	public String toString() {
@@ -114,10 +122,8 @@ public class User implements Serializable {
 				+ ", language=" + language + ", role=" + role + "]";
 	}
 
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+	
+	
 	
 
 
