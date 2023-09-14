@@ -2,6 +2,7 @@ package com.cognixia.jump.languagelearning.exception;
 
 import java.util.Date;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -40,6 +41,15 @@ public class GlobalExceptionHandler {
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false) );
 		
 		return ResponseEntity.status(403).body(errorDetails);
+	}
+	
+	@ExceptionHandler(UserExistsException.class)
+	public ResponseEntity<?> userExists(UserExistsException ex, WebRequest request){
+		
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+		
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(errorDetails);
+		
 	}
 
 

@@ -33,15 +33,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc(addFilters = false)
 public class UserControllerTest {
 	
+	private static final String STARTING_URI = "http://localhost:8080/api";
 
 	@Autowired
 	private MockMvc mvc;
 	
-	@MockBean
-	private UserService userService;
-	
 	@Autowired
 	private ObjectMapper objectMapper;
+	
+	@MockBean
+	private UserService userService;
 	
 	@MockBean 
 	private PasswordEncoder encoder;
@@ -55,7 +56,6 @@ public class UserControllerTest {
 	@InjectMocks
 	private UserController userController;
 	
-	private static final String STARTING_URI = "http://localhost:8080/api";
 	
 	
 	@Test
@@ -63,10 +63,11 @@ public class UserControllerTest {
 		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
 		String stringUser = objectMapper.writeValueAsString(mockUser);
+		String uri = STARTING_URI + "/user";
 		
 		when(userService.createUser(Mockito.any(User.class))).thenReturn(mockUser);
 		
-		mvc.perform(post(STARTING_URI + "/user")
+		mvc.perform(post(uri)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(stringUser))
 				.andDo(print())
@@ -100,10 +101,11 @@ public class UserControllerTest {
 		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
 		String toJsonUser = objectMapper.writeValueAsString(mockUser);
+		String uri = STARTING_URI + "/user";
 		
 		when(userService.updateUser(Mockito.any(User.class))).thenReturn(mockUser);
 		
-		mvc.perform(put(STARTING_URI + "/user")
+		mvc.perform(put(uri)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(toJsonUser))
 		.andExpect(status().isOk());
@@ -117,13 +119,14 @@ public class UserControllerTest {
 	public void testDeleteUser() throws Exception{
 		int userId = 1;
 		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
+		String uri = STARTING_URI + "/user/" + userId;
 		
 		when(userService.deleteUser(userId)).thenReturn(mockUser);
 		
-		mvc.perform(delete(STARTING_URI + "/user/" + userId )
+		mvc.perform(delete(uri)
 				.contentType(MediaType.APPLICATION_JSON_VALUE))
 		.andDo(print())
-		.andExpect(status().isNoContent());
+		.andExpect(status().isOk());
 		
 		verify(userService, times(1)).deleteUser(userId);
 //		verifyNoInteractions(userService);
