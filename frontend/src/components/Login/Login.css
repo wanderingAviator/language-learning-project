@@ -1,43 +1,49 @@
-body {
-    background:  rgb(246, 220, 255);
-    font-family: Arial, Impact,;
-    display: flex;
-    /*height: 100vh;*/
-    margin: 0;
-    padding: 0;
-    /*background-attachment: fixed;*/
-    flex-direction: column;
+.sidebar {
+  background-color: rgba(0, 0, 0, 0.26);
+  width: 35%;
+  height:100vh;
+  white-space: nowrap;
 }
-.text-container h1 {
-    height: 60px; 
+.sidebar h1 { 
     display: flex;
+    align-content:center;
+    margin-top:250px;
+    margin-left:250px;
     color: rgb(0, 0, 0);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 60px;
 }
 
-.header {
-    background: rgb(209, 121, 226);
-    font-size: 30px;
-    width: 100%;
-  }
-
-  .text-container {
-    background-color: rgba(0, 0, 0, 0.26);
-    margin-right: 65%;
-    padding:10px;
-    font-size: 10px;
-    width: 35%;
-    white-space: nowrap;
+.sidebar h2 { 
+  display: flex;
+  margin-left:250px;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
 }
 
-  .footer {
-    background: rgb(209, 121, 226);
-    font-size: 30px;
-    width: 100%;
-    position:absolute;
-    width:100%;
-    bottom:0;
-  }
+.sidebar p {
+  display:inline-flex;
+  font-size:20px;
+  margin-right:10px;
+}
+
+.space img{
+  width: 750px;
+  height: 750px;
+  border: 2px solid black;
+  float:right;
+}
+
+.loginfooter {
+  background: rgb(209, 121, 226);
+  font-size: 30px;
+  width: 100%;
+  position:absolute;
+  width:100%;
+  bottom:0;
+}
+
+  
 
 

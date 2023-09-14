@@ -17,7 +17,7 @@ const MainPage = () => {
   return (
     <div className="MainPage-container">
     
-      <div class="header">
+      <div class="mainheader">
         <h1>Language Learning App idk if we picked a name</h1>
         <h2>ver 1.0</h2>
         <h3>Username</h3>
@@ -32,7 +32,7 @@ const MainPage = () => {
         <img src={ph5} alt = "ph5 img" style={{float:'left',marginLeft:100,marginTop:200,width:250,height:250}}/>
       </div>
       
-      <div class ="footer">
+      <div class ="mainfooter">
         <Link to='/' style={{float:'right',marginRight:10}}>Logout</Link>
       </div>
       
