@@ -42,9 +42,14 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, columnDefinition="default 'ROLE_USER'")
 	private Role role;
+	
+	@Column(columnDefinition="default 'true'")
+	private Boolean isEnabled;
 
+	public User() {}
+	
 	public User(Integer id, @NotBlank String email, @NotBlank String username, @NotBlank String password,
-			Language language, Role role) {
+			Language language, Role role, Boolean isEnabled) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -52,6 +57,7 @@ public class User implements Serializable {
 		this.password = password;
 		this.language = language;
 		this.role = role;
+		this.isEnabled = isEnabled;
 	}
 
 	public Integer getId() {
@@ -113,6 +119,8 @@ public class User implements Serializable {
 		return true;
 	}
 	
+
+
 	
 	
 

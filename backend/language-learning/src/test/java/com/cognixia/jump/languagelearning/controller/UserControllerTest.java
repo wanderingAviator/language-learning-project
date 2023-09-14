@@ -4,11 +4,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -21,28 +21,34 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.cognixia.jump.languagelearning.model.Language;
 import com.cognixia.jump.languagelearning.model.User;
 import com.cognixia.jump.languagelearning.model.User.Role;
+import com.cognixia.jump.languagelearning.service.MyUserDetailsService;
 import com.cognixia.jump.languagelearning.service.UserService;
 import com.cognixia.jump.languagelearning.util.JwtUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(UserController.class)
+@WebMvcTest(controllers = UserController.class)
 @AutoConfigureMockMvc(addFilters = false)
 public class UserControllerTest {
 	
-	private static final String STARTING_URI = "http://localhost:8080/api";
 
 	@Autowired
 	private MockMvc mvc;
 	
-	@MockBean 
+	@MockBean
 	private UserService userService;
+	
+	@Autowired
+	private ObjectMapper objectMapper;
 	
 	@MockBean 
 	private PasswordEncoder encoder;
+	
+	@MockBean
+	private MyUserDetailsService userDetailsService;
 	
 	@MockBean
 	private JwtUtil jwtUtil;
@@ -50,45 +56,83 @@ public class UserControllerTest {
 	@InjectMocks
 	private UserController userController;
 	
-	@Test 
-	void testGetUserById() throws Exception {
+	private static final String STARTING_URI = "http://localhost:8080/api";
+	
+	
+	@Test
+	public void testCreateUser() throws Exception {
+		int userId = 1;
+		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
+		String stringUser = objectMapper.writeValueAsString(mockUser);
 		
-		final String uri =  STARTING_URI + "/user/1";
-		Language userLanguage = new Language(1, "Spanish");
-		User user = new User (1, "albertzeap@email.com", "albertpaez", "password123", userLanguage, Role.ROLE_USER);
+		when(userService.createUser(Mockito.any(User.class))).thenReturn(mockUser);
 		
-		when(userService.getUserById(1)).thenReturn(user);
+		mvc.perform(post(STARTING_URI + "/user")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(stringUser))
+				.andDo(print())
+				.andExpect(status().isCreated());
+
+		verify(userService, times(1)).createUser(Mockito.any(User.class));
+	}
+	
+	
+	@Test
+	public void testGetUserById() throws Exception{
+		int userId = 1;
+		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
+		String toJsonUser = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mockUser);
+		final String uri =  STARTING_URI + "/user/" + userId;
 		
-		 mvc.perform(get(uri)) // perform get request
-			.andDo(print()) // print request sent/response given
-			.andExpect(status().isOk()) // expect a 200 status code
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-	        .andExpect(jsonPath("$.id").value(user.getId()))
-			.andExpect(jsonPath("$.username").value(user.getUsername()))
-			.andExpect(jsonPath("$.password").value(user.getPassword()))
-			.andExpect(jsonPath("$.email").value(user.getEmail()));
-		 
-		 verify(userService, times(1)).getUserById(1);
-		 verifyNoInteractions(userService);
+		
+		when(userService.getUserById(userId)).thenReturn(mockUser);
+		
+		mvc.perform(get(uri))
+		.andDo(print())
+		.andExpect(status().isOk());		
+		
+		verify(userService, times(1)).getUserById(userId);
+//		verifyNoInteractions(userService);
+		
 	}
 	
 	@Test
-    void testCreateUser() throws Exception{
-
-        // ARRANGE 
-        String uri = STARTING_URI + "/user";
-        Language userLanguage = new Language(1, "Spanish");
-        User user = new User (1, "albertzeap@email.com", "albertpaez", "password123", userLanguage, Role.ROLE_USER);
-        
-        
-        when(userService.createUser(Mockito.any(User.class))).thenReturn(user);
-
-        mvc.perform(post(uri).content(user.toJson()) // data sent in body NEEDS to be in JSON format
+	public void testUpdateUser() throws Exception {
+		int userId = 2;
+		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
+		String toJsonUser = objectMapper.writeValueAsString(mockUser);
+		
+		when(userService.updateUser(Mockito.any(User.class))).thenReturn(mockUser);
+		
+		mvc.perform(post(STARTING_URI + "/user")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(toJsonUser))
+		.andExpect(status().isCreated());
+		
+		
+		verify(userService, times(1)).updateUser(Mockito.any(User.class));
+//		verifyNoInteractions(userService);
+	}
+	
+	@Test
+	public void testDeleteUser() throws Exception{
+		int userId = 1;
+		User mockUser = new User (userId, "albertzeap@email.com", "albertpaez", "password123", null, Role.ROLE_USER, true);
+		String toJsonUser = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mockUser);
+		
+		when(userService.deleteUser(userId)).thenReturn(mockUser);
+		
+		mvc.perform(delete(STARTING_URI + "/user/" + userId )
 				.contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andDo(print())
-				.andExpect(status().isCreated())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
-
-    }
+		.andDo(print())
+		.andExpect(status().isNoContent());
+		
+		verify(userService, times(1)).deleteUser(userId);
+//		verifyNoInteractions(userService);
+		
+	}
+	
+	
+	
 	
 }

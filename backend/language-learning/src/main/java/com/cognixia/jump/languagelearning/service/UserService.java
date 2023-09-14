@@ -33,5 +33,26 @@ public class UserService {
 		
 		return created;
 	}
+	
+	public User updateUser(User user) throws ResourceNotFoundException {
+		
+		boolean exists = userRepo.existsById(user.getId());
+		if(!exists) throw new ResourceNotFoundException("User", user.getId());
+		
+		User created = userRepo.save(user);
+		
+		return created;
+	}
+
+	public User deleteUser(int id) throws ResourceNotFoundException {
+		
+		Optional<User> found = userRepo.findById(id);
+		if(found.isEmpty()) throw new ResourceNotFoundException("User", id);
+		
+		userRepo.deleteById(id);
+		User deleted = found.get();
+		
+		return deleted;
+	}
 
 }
