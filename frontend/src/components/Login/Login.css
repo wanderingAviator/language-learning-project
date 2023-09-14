@@ -1,0 +1,49 @@
+.sidebar {
+  background-color: rgba(0, 0, 0, 0.26);
+  width: 35%;
+  height:100vh;
+  white-space: nowrap;
+}
+.sidebar h1 { 
+    display: flex;
+    align-content:center;
+    margin-top:250px;
+    margin-left:250px;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+}
+
+.sidebar h2 { 
+  display: flex;
+  margin-left:250px;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
+}
+
+.sidebar p {
+  display:inline-flex;
+  font-size:20px;
+  margin-right:10px;
+}
+
+.space img{
+  width: 750px;
+  height: 750px;
+  border: 2px solid black;
+  float:right;
+}
+
+.loginfooter {
+  background: rgb(209, 121, 226);
+  font-size: 30px;
+  width: 100%;
+  position:absolute;
+  width:100%;
+  bottom:0;
+}
+
+  
+
+
