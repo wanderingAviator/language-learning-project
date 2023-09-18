@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Login.css"
 import logo from './image.png';
-import { Link } from 'react-router-dom'
 
 console.log(logo);
 
@@ -9,25 +8,29 @@ const Login = () => {
   return (
     <div classname="Login-container">
      
-     <div className="sidebar">
-        <h1>Login</h1>
+     <div class="sidebar">
+     <h1>Login to your Account</h1>
         <p>Username</p>
-        <input type="text" id="Username"/>
+        <input type="text" id="Username" style={{height:'20px',width:'200px'}}/>
+
         <br></br>
-        <br></br>
+
         <p>Password</p>
-        <input type="password" id="Password"/>
+        <input type="password" id="Password" style={{height:'20px',width:'200px'}}/>
+
         <br></br>
-        <button>Login</button>   
+
+        <div class="login">
+          <button style={{marginRight:'15px'}}>Login</button>
+          <a href="http://localhost:3000/"><button>Back to Home</button></a>
+        </div>
+
       </div>
       
-      <div className="space">
+      <div class="space">
         <img src={logo} alt = "logo img"/>
       </div>
-      
-      <div className="loginfooter">
-        <Link to='/'>Back to Home</Link>
-      </div>
+
     </div>
   )
 }

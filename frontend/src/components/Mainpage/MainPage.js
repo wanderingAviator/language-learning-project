@@ -5,7 +5,6 @@ import numbers from './numbers.png';
 import ph3 from './ph3.png';
 import ph4 from './ph4.png';
 import ph5 from './ph5.png';
-import { Link } from 'react-router-dom'
 
 console.log(color);
 console.log(numbers);
@@ -33,7 +32,9 @@ const MainPage = () => {
       </div>
       
       <div class ="mainfooter">
-        <Link to='/' style={{float:'right',marginRight:10}}>Logout</Link>
+        <div class = "main">
+          <a href="http://localhost:3000/" style={{float:'right'}}><button>Back to Home</button></a>
+        </div>
       </div>
       
     </div>
