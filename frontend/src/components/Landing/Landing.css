@@ -27,13 +27,20 @@ body{
     width: 100%;
     background-color: rgba(0, 0, 0, 0.26);
 }
-
-.text-container button{
-    font-size: 25px;
-    padding:5px;
-    margin-left: 175px;
-    margin-top: 25px;
+.landing-buttons{
+    margin-left: 245px;
+    display:flex;
+}
+.landing-buttons button{
     background-color: rgba(0, 0, 0, 0.26);
+    border: 2px solid black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .image-container img{
