@@ -1,6 +1,8 @@
 package com.cognixia.jump.languagelearning.model;
 
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +12,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class FillAnswer {
+public class FillAnswer implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
