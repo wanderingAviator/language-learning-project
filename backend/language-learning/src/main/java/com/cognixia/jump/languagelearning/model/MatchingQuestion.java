@@ -12,30 +12,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "matchingquestion ") // Specify the table name
 public class MatchingQuestion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; 
-	
+	private Integer id;
+
 	@NotBlank
 	private String prompt;
-	
+
 	@ManyToOne
-	@JoinColumn( name = "topic_id", referencedColumnName = "id" )
+	@JoinColumn(name = "topic_id", referencedColumnName = "id")
 	private Topic topic;
-	
-	@OneToMany(mappedBy="matchingQuestion")
+
+	@OneToMany(mappedBy = "matchingQuestion")
 //	@OneToMany
 //	@JoinColumn( name = "answer_id", referencedColumnName = "id" )
 	private List<MatchingAnswer> answers;
 
-	public MatchingQuestion() {}
+	public MatchingQuestion() {
+	}
 
 	public MatchingQuestion(Integer id, @NotBlank String prompt, List<MatchingAnswer> answers) {
 		super();
@@ -83,13 +86,5 @@ public class MatchingQuestion implements Serializable {
 	public void setAnswers(List<MatchingAnswer> answers) {
 		this.answers = answers;
 	}
-	
-	
-	
-	
 
-	
-	
-	
-	
 }

@@ -1,4 +1,5 @@
 package com.cognixia.jump.languagelearning.model;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,31 +16,31 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class Topic implements Serializable{
-	
+public class Topic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotBlank
 	private String name;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "language_id", referencedColumnName="id", nullable = false)
 	private Language language;
-	
-	@OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
+
 	@JsonIgnore
+	@OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
 	private List<FillQuestion> fill_questions;
-	
-	@OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
+
 	@JsonIgnore
+	@OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
 	private List<MatchingQuestion> match_questions;
-	
-	public Topic() {}
+
+	public Topic() {
+	}
 
 	public Topic(Integer id, @NotBlank String name, Language language, List<FillQuestion> fill_questions,
 			List<MatchingQuestion> match_questions) {
@@ -96,11 +97,5 @@ public class Topic implements Serializable{
 		return "Topic [id=" + id + ", name=" + name + ", language=" + language + ", fill_questions=" + fill_questions
 				+ ", match_questions=" + match_questions + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
