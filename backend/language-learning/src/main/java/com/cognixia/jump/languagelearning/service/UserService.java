@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cognixia.jump.languagelearning.exception.ResourceNotFoundException;
@@ -21,6 +22,9 @@ public class UserService {
 	
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	LanguageRepo languageRepo;
@@ -47,6 +51,8 @@ public class UserService {
 		user.setRole(Role.ROLE_USER);
 		user.setIsEnabled(true);
 		user.setLanguage(language);
+		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		
 		User created = userRepo.save(user);
