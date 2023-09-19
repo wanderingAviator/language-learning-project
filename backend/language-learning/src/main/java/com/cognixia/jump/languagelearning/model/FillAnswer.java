@@ -1,7 +1,8 @@
 package com.cognixia.jump.languagelearning.model;
 
-
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,33 +10,38 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class FillAnswer implements Serializable{
+@Table(name = "fillanswer") // Specify the table name
+public class FillAnswer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotBlank
 	private String answer;
-	
+
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn( name = "question_id", referencedColumnName = "id" ) // can add nullable = false to make sure dorm id is given for each account (won't b/c we may have commuter students)
+	@JoinColumn(name = "question_id", referencedColumnName = "id") // can add nullable = false to make sure dorm id is
+																	// given for each account (won't b/c we may have
+																	// commuter students)
 	private FillQuestion question;
-	
+
 	public FillAnswer(Integer id, String answer, FillQuestion question) {
 		super();
 		this.id = id;
 		this.answer = answer;
 		this.question = question;
 	}
-	
+
 	public FillAnswer() {
-		
+
 	}
 
 	public Integer getId() {
@@ -61,6 +67,5 @@ public class FillAnswer implements Serializable{
 	public void setQuestion(FillQuestion question) {
 		this.question = question;
 	}
-	
-	
+
 }

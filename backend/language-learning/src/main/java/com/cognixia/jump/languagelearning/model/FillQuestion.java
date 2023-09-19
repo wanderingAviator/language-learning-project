@@ -9,9 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "fillquestion") // Specify the table name
 public class FillQuestion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,8 +33,11 @@ public class FillQuestion implements Serializable {
 //	@OneToMany
 //	@JoinColumn( name = "answer_id", referencedColumnName = "id" )
 	private List<FillAnswer> answers;
+	
 
+	
 	public FillQuestion() {}
+
 
 	public FillQuestion(Integer id, @NotBlank String prompt, Topic topic, List<FillAnswer> answers) {
 		super();
@@ -40,39 +45,53 @@ public class FillQuestion implements Serializable {
 		this.prompt = prompt;
 		this.topic = topic;
 		this.answers = answers;
+		//
 	}
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 
 	public String getPrompt() {
 		return prompt;
 	}
 
+
 	public void setPrompt(String prompt) {
 		this.prompt = prompt;
 	}
+
 
 	public Topic getTopic() {
 		return topic;
 	}
 
+
 	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
+
 
 	public List<FillAnswer> getAnswers() {
 		return answers;
 	}
 
+
 	public void setAnswers(List<FillAnswer> answers) {
 		this.answers = answers;
 	}
+
+
+
+
+
 	
 	
 	
