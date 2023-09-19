@@ -29,6 +29,8 @@ public class Language implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
 	private List<Topic> topics;
+	
+	public Language() {}
 
 	public Language(Integer id, @NotBlank String name, List<Topic> topics, List<FillQuestion> fillQuestions,
 			List<MatchingQuestion> matchQuestions) {
@@ -36,10 +38,6 @@ public class Language implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.topics = topics;
-
-	}
-
-	public Language() {
 
 	}
 

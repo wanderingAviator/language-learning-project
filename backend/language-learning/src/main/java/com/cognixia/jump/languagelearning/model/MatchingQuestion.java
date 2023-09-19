@@ -3,6 +3,8 @@ package com.cognixia.jump.languagelearning.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -38,6 +40,13 @@ public class MatchingQuestion implements Serializable {
 	public MatchingQuestion() {
 	}
 
+	public MatchingQuestion(Integer id, @NotBlank String prompt, List<MatchingAnswer> answers) {
+		super();
+		this.id = id;
+		this.prompt = prompt;
+		this.answers = answers;
+	}
+	
 	public MatchingQuestion(Integer id, @NotBlank String prompt, Topic topic, List<MatchingAnswer> answers) {
 		super();
 		this.id = id;
