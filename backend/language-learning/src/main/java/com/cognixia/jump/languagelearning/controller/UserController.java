@@ -37,7 +37,7 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public ResponseEntity<?> createUser(@Valid @RequestBody User user) throws UserExistsException{
-		
+		System.out.println(user);
 		User created = userService.createUser(user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}
