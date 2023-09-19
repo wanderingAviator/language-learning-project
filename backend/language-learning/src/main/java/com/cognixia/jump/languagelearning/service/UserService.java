@@ -1,5 +1,6 @@
 package com.cognixia.jump.languagelearning.service;
 
+import java.lang.reflect.Field;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,18 @@ public class UserService {
 	
 	public User updateUser(User user) throws ResourceNotFoundException {
 		
-		boolean exists = userRepo.existsById(user.getId());
-		if(!exists) throw new ResourceNotFoundException("User", user.getId());
+		Optional<User> exists = userRepo.findById(user.getId());
+		if(exists.isEmpty()) throw new ResourceNotFoundException("User", user.getId());
+		
+		User existingUser = exists.get();
+		
+		if(user.getEmail() == null) user.setEmail(existingUser.getEmail());
+		if(user.getUsername() == null) user.setUsername(existingUser.getPassword());
+		if(user.getPassword() == null) user.setPassword(existingUser.getPassword());
+		if(user.getLanguage() == null) user.setLanguage(existingUser.getLanguage());
+		if(user.getRole() == null) user.setRole(existingUser.getRole());
+		if(user.getId() == null) user.setId(existingUser.getId());
+		user.setIsEnabled(true);
 		
 		
 		User created = userRepo.save(user);
