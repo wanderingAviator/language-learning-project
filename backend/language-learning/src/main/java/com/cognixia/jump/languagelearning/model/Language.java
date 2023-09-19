@@ -3,6 +3,8 @@ package com.cognixia.jump.languagelearning.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +26,10 @@ public class Language implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Topic> topics;
+	
+	public Language() {}
 
 	public Language(Integer id, @NotBlank String name, List<Topic> topics) {
 		super();

@@ -2,6 +2,8 @@ package com.cognixia.jump.languagelearning.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +29,10 @@ public class MatchingAnswer implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn( name = "question_id", referencedColumnName = "id" )
+	@JsonIgnore
 	private MatchingQuestion matchingQuestion;
+	
+	public MatchingAnswer() {}
 
 	public MatchingAnswer(Integer id, @NotBlank String leftMatch, @NotBlank String rightMatch,
 			MatchingQuestion matchingQuestion) {
