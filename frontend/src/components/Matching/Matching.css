@@ -68,7 +68,23 @@
     font-size: 40px;
   }  
   
-    
-  
-  
+  .match-card{
+    background-color: gray;
+    width: 20rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .match-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .matching-container{
+    margin: auto;
+  }
   
