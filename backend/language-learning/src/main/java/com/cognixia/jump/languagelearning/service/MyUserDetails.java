@@ -1,4 +1,5 @@
 package com.cognixia.jump.languagelearning.service;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -14,24 +15,27 @@ import com.cognixia.jump.languagelearning.model.User;
 public class MyUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	private Integer id;
 	private String username;
 	private String password;
 	private boolean enabled;
 	private List<GrantedAuthority> authorities;
-	
-	// when a new object is created, only the RELEVANT info will be extracted from the User
+
+	// when a new object is created, only the RELEVANT info will be extracted from
+	// the User
 	public MyUserDetails(User user) {
-		
+
+		this.id = user.getId();
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.enabled = user.isEnabled();
-		
-		// Granted Authority -> permissions/grants of what a user can do based on their role
-		this.authorities = Arrays.asList( new SimpleGrantedAuthority( user.getRole().name() ) );
-		
+
+		// Granted Authority -> permissions/grants of what a user can do based on their
+		// role
+		this.authorities = Arrays.asList(new SimpleGrantedAuthority(user.getRole().name()));
+
 	}
-	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,12 +51,15 @@ public class MyUserDetails implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
+	public Integer getId() {
+		return id;
+	}
 
 	// all these methods below:
 	// - DON'T NEED to be stored in a user table
 	// - store this info if it's worthwhile for your security
-	// - have all these methods return true manually if you are NOT storing this 
-	//   info in a user table
+	// - have all these methods return true manually if you are NOT storing this
+	// info in a user table
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -74,4 +81,3 @@ public class MyUserDetails implements UserDetails {
 	}
 
 }
-
