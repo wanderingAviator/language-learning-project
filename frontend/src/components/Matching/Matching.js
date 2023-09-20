@@ -27,6 +27,10 @@ const Matching = () => {
           <a href=""><button>answer5</button></a>
 
         </div>
+
+        <div class="matchingfooter">
+          <a href="http://localhost:3000/main" style={{float:'right'}}><button>Back to Home</button></a>
+        </div>
       </div>
     )
   }
