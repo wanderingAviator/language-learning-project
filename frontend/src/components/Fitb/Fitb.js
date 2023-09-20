@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import "./Fitb.css"
 
 
-const MainPage = () => {
+const Fitb = () => {
   const [questions, setQuestions] = useState([]);
 
   const getQuestions = async () => {
@@ -15,7 +15,6 @@ const MainPage = () => {
       }
       const data = await response.json();
       setQuestions(data);
-      // console.log(data);
     } catch (error) {
       console.error('Error fetching questions:', error);
     }
@@ -52,4 +51,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default Fitb
