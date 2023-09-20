@@ -8,6 +8,8 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.cognixia.jump.languagelearning.service.MyUserDetails;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -63,8 +65,17 @@ public class JwtUtil {
 		// claims info/data you want to include in payload of token besides the user info
 		Map<String, Object> claims = new HashMap<>();
 		
+		 // Include user ID in the claims
+        claims.put("userId", getUserIDFromUserDetails(userDetails));
+		
 		// returns token for user given along with any claims
 		return createToken(claims, userDetails.getUsername());
+	}
+	private Integer getUserIDFromUserDetails(UserDetails userDetails) {
+	    if (userDetails instanceof MyUserDetails) {
+	        return ((MyUserDetails) userDetails).getId(); // Replace with the actual method to get user ID
+	    }
+	    return null;
 	}
 	
 	// creates the token
