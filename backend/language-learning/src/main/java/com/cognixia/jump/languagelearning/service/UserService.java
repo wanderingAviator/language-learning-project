@@ -67,6 +67,8 @@ public class UserService {
 		
 		User existingUser = exists.get();
 		
+		// Will try to clean up this code later 
+		
 		if(user.getEmail() == null) user.setEmail(existingUser.getEmail());
 		if(user.getUsername() == null) user.setUsername(existingUser.getPassword());
 		if(user.getPassword() == null) user.setPassword(existingUser.getPassword());
