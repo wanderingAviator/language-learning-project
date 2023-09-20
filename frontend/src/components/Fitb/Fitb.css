@@ -1,88 +1,130 @@
+body {
+}
+.fitb-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .fitbheader {
-    background: rgb(209, 121, 226);
-    font-size: 30px;
-    width: 100%;
-  }
-
-  .fitbheader h1 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    height: 60px; 
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 60px;
-}
-.fitbheader h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 10px;
-    height: 60px; 
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-}
-.fitbheader h3 {
-    margin-right:10px;
-    display: flex;
-    justify-content: right;
-    align-items: right;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+  background: rgb(209, 121, 226);
+  font-size: 2rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  flex: 1;
 }
 
+.fitbheader h1 {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  align-items: left;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.question-wrap {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 2;
+}
 .fitbquestion {
-  display:flex;
-  margin-left: 20px;
-  margin-right:20px;
-  text-align:left;
-  padding-left:20px;
-  padding-right:20px;
-  font-size:30px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 20px;
+  font-size: 30px;
   background: rgba(0, 0, 0, 0.26);
   border: 2px solid black;
 }
 
 .fitbanswer {
-  margin-top:100px;
+  margin-top: 100px;
 }
-
-.fitbanswer button {
-  float:left;
-  margin:75px;
+.fitbanswer-button {
+  float: left;
+  margin: 75px;
   background-color: rgba(0, 0, 0, 0.26);
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0, 0.22);
+  border-radius: 10px;
   color: white;
   padding: 50px;
   font-size: 30px;
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.fitbanswer-button:hover {
+  background-color: rgba(0, 0, 0, 1);
+  border: 2px solid rgb(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 .fitbfooter {
-  background: rgb(209, 121, 226);
+  flex: 1;
+  box-sizing: border-box;
+  background: rgb(142, 54, 160);
   font-size: 30px;
   width: 100%;
-  position:absolute;
-  width:100%;
-  bottom:0;
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+}
+.fitb {
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .fitb button {
-  margin:20px;
   background-color: rgba(0, 0, 0, 0.26);
   border: 2px solid black;
   color: white;
   padding: 15px;
   font-size: 20px;
+  cursor: pointer;
 }
-  
-    
-  
-  
-  
+
+.fitb button:hover {
+  background-color: rgba(0, 0, 0, 0.26);
+  border: 2px solid black;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.answer-wrap {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer-wrap > input {
+  height: 40px;
+  line-height: 30px;
+  font-size: 25px;
+  color: rgb(142, 54, 160);
+}
+
+/* Change the border color for all input elements */
+.answer-wrap > input:focus {
+  outline-color: rgb(142, 54, 160);
+}
+
+.correct {
+  color: green;
+}
+.error {
+  color: red;
+}
+
+.next-question {
+  text-decoration: none;
+  color: rgb(142, 54, 160);
+}
+.next-question:hover{
+  text-decoration: underline;
+}

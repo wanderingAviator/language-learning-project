@@ -41,32 +41,33 @@ const Fitb = () => {
   }, []);
 
   return (
-    <div className="Fitb-container">
+    <div className="fitb-container">
       <div className="fitbheader">
         <h1>Yet Another Language Learning App</h1>
-        <h2>ver 1.0</h2>
-        <h3>Username</h3>
-        <h3>Language</h3>
       </div>
-
-      <div className="fitbquestion">
-        <p>{question.prompt}</p>
-        <input
-          style={{ height: "50px", width: "200px" }}
-          onChange={(e) => setGuess(e.target.value)}
-        />
-        <button onClick={handleGuess}>Check Answer</button>
-        {/* Display the success or error message */}
-        <div>{message}</div>
-        {/* Display Link button on success */}
-        {message === "Correct! " && (
-          <Link to="/language/matching">Next Question</Link>
-        )}
+      <div className="question-wrap">
+        <div className="fitbquestion">
+          <p>{question.prompt}</p>
+          <div className="answer-wrap">
+            <input onChange={(e) => setGuess(e.target.value)} />
+          </div>
+          <button className="fitbanswer-button" onClick={handleGuess}>
+            Check Answer
+          </button>
+          {/* Display the success or error message */}
+          <div className={message === "Correct! " ? "correct" : "error"}>
+            {message}
+          </div>
+          {/* Display Link button on success */}
+          {message === "Correct! " && (
+            <Link className="next-question" to="/language/matching">Next Question -></Link>
+          )}
+        </div>
       </div>
 
       <div className="fitbfooter">
         <div className="fitb">
-          <a href="http://localhost:3000/main" style={{ float: "right" }}>
+          <a href="http://localhost:3000/main">
             <button>Back to Home</button>
           </a>
         </div>
