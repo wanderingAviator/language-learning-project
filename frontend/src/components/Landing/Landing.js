@@ -2,15 +2,13 @@ import React from 'react'
 import logo from './image.png';
 import "./Landing.css"
 
-console.log(logo);
-
 const Landing = () => {
   return (
     <div className="landing-container">
 
       <div className="text-container">
-        <h1>BIG OL TITLE</h1>
-        <p>this is a catchy, super-fancy tagline yaaaaaay wait what happens it its super long</p>
+        <h1>Yet Another Language Learning App</h1>
+        <p>Multi-Lingual Coding: now in more ways than one!</p>
 
         <div className="landing-buttons">
           <a href="http://localhost:3000/login"><button >Login</button></a>
