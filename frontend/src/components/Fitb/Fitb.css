@@ -7,9 +7,7 @@
   background: rgb(209, 121, 226);
   font-size: 2rem;
   width: 100%;
-  padding: 1rem;
   box-sizing: border-box;
-  flex: 1;
 }
 
 .fitbheader h1 {
@@ -19,6 +17,18 @@
   align-items: left;
   color: rgb(0, 0, 0);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex: 1;
+  font-size:50px;
+}
+
+.fitbheader h3 {
+  margin-right:10px;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
 }
 .question-wrap {
   padding: 1rem;
@@ -148,9 +158,11 @@
 
 .correct {
   color: green;
+  margin-top: -10vh;
 }
 .error {
   color: red;
+  margin-top: -10vh;
 }
 .successSection {
   display: flex;

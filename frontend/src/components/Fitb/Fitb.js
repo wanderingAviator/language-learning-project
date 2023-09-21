@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Fitb.css";
 import ReactCountdownClock from "react-countdown-clock";
 import FitbModal from "./FitbModal";
+import decodeJWT from '../jwtService/jwtService';
 
 const Fitb = () => {
   const [question, setQuestion] = useState("");
@@ -11,6 +12,7 @@ const Fitb = () => {
   const [completions, setCompletions] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [pause, setPause] = useState(false);
+  const [language, setLanguage] = useState([]);
   const navigate = useNavigate();
   const getQuestion = async () => {
     try {
@@ -23,7 +25,6 @@ const Fitb = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      console.log(data);
       setQuestion(data);
     } catch (error) {
       console.error("Error fetching questions:", error);
@@ -75,9 +76,28 @@ const Fitb = () => {
     navigate("/main");
   };
 
+  const getLanguage = async () => {
+    try {
+      const jwtToken = decodeJWT(localStorage.getItem("jwtToken"));
+      const response = await fetch(`http://localhost:8080/api/user/${jwtToken.userId}`);
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setLanguage(data);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
+    
+  };
+
   useEffect(() => {
     getQuestion();
+    getLanguage();
   }, []);
+
+  
 
   return (
     <div className="fitb-container">
@@ -89,6 +109,8 @@ const Fitb = () => {
       />
       <div className="fitbheader">
         <h1>Fill in the blank</h1>
+        <h3>{JSON.parse(localStorage.getItem("user")).username}</h3>
+        <h3>{language.language?.name}</h3>
       </div>
       <div className="question-wrap">
         <div className="fitbquestion">
@@ -110,7 +132,7 @@ const Fitb = () => {
           {message === "Correct! " && (
             <div className="successSection">
               <button className="next-question" onClick={goToMatching}>
-                Matching Question >
+                Matching Question {'>'} 
               </button>
               <button className="playAgain" onClick={playAgain}>
                 Play again ^
