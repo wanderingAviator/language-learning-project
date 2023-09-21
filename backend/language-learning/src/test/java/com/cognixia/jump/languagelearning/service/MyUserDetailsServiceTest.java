@@ -33,7 +33,7 @@ public class MyUserDetailsServiceTest {
     @Test
     public void testLoadUserByUsername() {
         // Create a mock User object
-    	Language userLanguage = new Language(1, "Spanish", null);
+    	Language userLanguage = new Language(1, "Spanish", null, null, null);
     	User mockUser = new User (1, "albertzeap@email.com", "albertpaez", "password123", userLanguage, Role.ROLE_USER, true);
         
         // Mock the behavior of the UserRepo to return the mockUser when findByUsername is called

@@ -41,6 +41,10 @@ public class Language implements Serializable {
 
 	}
 
+	public Language(Integer id, String string, Object object) {
+
+	}
+
 	public Integer getId() {
 		return id;
 	}
