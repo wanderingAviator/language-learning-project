@@ -17,7 +17,7 @@ const FitbModal = ({ open, onClose, handleOnClose, handleOnDontTryAgain }) => {
           </div>
           <div className="btnContainer">
             <button className="btnYes" onClick={handleOnClose}>
-              <span className="bold">Yes</span>, LFG!
+              <span className="bold">Yes</span>
             </button>
             <button className="btnNo" onClick={handleOnDontTryAgain}>
               <span className="bold">No</span>, thanks
