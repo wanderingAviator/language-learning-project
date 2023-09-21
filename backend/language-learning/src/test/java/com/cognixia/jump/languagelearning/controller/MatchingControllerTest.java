@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -24,7 +25,7 @@ import com.cognixia.jump.languagelearning.service.MyUserDetailsService;
 import com.cognixia.jump.languagelearning.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(controllers = MatchingController.class)
+@WebMvcTest(controllers = MatchingController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 @AutoConfigureMockMvc(addFilters = false)
 public class MatchingControllerTest {
 	
