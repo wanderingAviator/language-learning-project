@@ -61,6 +61,20 @@ const Fitb = () => {
     }
   };
 
+  const playAgain = () => {
+    setMessage("");
+    setGuess("");
+    getQuestion();
+    restartTimer();
+    setPause(false);
+  };
+  const goToMatching = () => {
+    navigate("/language/matching");
+  };
+  const goHome = () => {
+    navigate("/main");
+  };
+
   useEffect(() => {
     getQuestion();
   }, []);
@@ -74,11 +88,11 @@ const Fitb = () => {
         handleOnDontTryAgain={handleOnDontTryAgain}
       />
       <div className="fitbheader">
-        <h1>Yet Another Language Learning App</h1>
+        <h1>Fill in the blank</h1>
       </div>
       <div className="question-wrap">
         <div className="fitbquestion">
-          <p>{question.prompt}</p>
+          <p className="prompt">{question.prompt}</p>
           <div className="answer-wrap">
             <input onChange={(e) => setGuess(e.target.value)} value={guess} />
           </div>
@@ -86,20 +100,28 @@ const Fitb = () => {
             Check Answer
           </button>
           {/* Display the success or error message */}
-          <div className={message === "Correct! " ? "correct" : "error"}>
+          <div
+            id="successMessage"
+            className={message === "Correct! " ? "correct" : "error"}
+          >
             {message}
           </div>
           {/* Display Link button on success */}
           {message === "Correct! " && (
-            <Link className="next-question" to="/language/matching">
-              Next Question ->
-            </Link>
+            <div className="successSection">
+              <button className="next-question" onClick={goToMatching}>
+                Matching Question >
+              </button>
+              <button className="playAgain" onClick={playAgain}>
+                Play again ^
+              </button>
+            </div>
           )}
         </div>
         <div className="clockWrap">
           <ReactCountdownClock
             key={completions}
-            seconds={5}
+            seconds={10}
             color="rgb(255, 0, 0, 0.7)"
             alpha={0.9}
             size={300}
@@ -111,9 +133,7 @@ const Fitb = () => {
 
       <div className="fitbfooter">
         <div className="fitb">
-          <a href="http://localhost:3000/main">
-            <button>Back to Home</button>
-          </a>
+          <button onClick={goHome}>Back to Home</button>
         </div>
       </div>
     </div>
