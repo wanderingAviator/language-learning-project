@@ -12,23 +12,24 @@ body{
 
 .text-container h1{
     background-color: rgba(0, 0, 0, 0.26);
-    margin-left: 80px;
+    margin-left: 2vw;
     padding:10px;
-    margin-top: 325px;
+    margin-top: 20vh;
     margin-bottom: 10px;
-    font-size: 80px;
-    width: 100%;
-    white-space: nowrap;
+    font-size: 60px;
+    width:35vw;
 }
 
 .text-container p{
+    padding:10px;
     font-size: 20px;
-    margin-left: 90px;
-    width: 100%;
+    margin-top:50px;
+    margin-left: 5vw;
+    width: 30vw;
     background-color: rgba(0, 0, 0, 0.26);
 }
 .landing-buttons{
-    margin-left: 245px;
+    margin-left: 10vw;
     display:flex;
 }
 .landing-buttons button{
@@ -39,15 +40,26 @@ body{
     text-align: center;
     font-size: 24px;
     width: 100px;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 3vw;
+    margin-top: 2vw;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
+.landing-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(255, 255, 255, 1);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
 .image-container img{
-    margin-left: 400px;
-    margin-top: 100px;
-    width: 750px;
-    height: 750px;
-    border: 2px solid black;
+    margin-left: 35%;
+    margin-top: 15%;
+    width: 75vh;
+    height: 75vh;
 }
 

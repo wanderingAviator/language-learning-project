@@ -1,52 +1,74 @@
-.sidebar {
+.login-container {
+  display:flex;
+  flex-direction:row;
   background-color: rgb(209, 121, 226);
   width: 40%;
-  height:100vh;
-  top:0px;
-  white-space: nowrap;
-  position:fixed;
-}
-.sidebar h1 { 
-    display: flex;
-    align-content:center;
-    margin-top:250px;
-    margin-left:90px;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 40px;
+  height: 100vh;
 }
 
-.sidebar h2 { 
-  display: flex;
-  margin-left:250px;
-  color: rgb(0, 0, 0);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 40px;
+.login-container h1 { 
+  background-color: rgba(0, 0, 0, 0.26);
+  margin-left: 2vw;
+  padding:10px;
+  margin-top: 20vh;
+  font-size: 60px;
+  width:35vw;
 }
 
-.sidebar p {
-  display:inline-flex;
-  font-size:20px;
-  margin-right:10px;
+.login-text-container p {
+  padding:10px;
+  font-size: 20px;
+  margin-top:50px;
+  margin-left: 5vw;
+  width: 30vw;
+  background-color: rgba(0, 0, 0, 0.26);
 }
 
 .space img{
-  margin-left: 800px;
-  margin-top: 100px;
-  width: 750px;
-  height: 750px;
-  border: 2px solid black;
+  margin-left: 35%;
+  margin-top: 15%;
+  width: 75vh;
+  height: 75vh;
+}
+
+.login{
+  display:flex;
 }
 
 .login button {
-  margin-top:20px;
   background-color: rgba(0, 0, 0, 0.26);
   border: 2px solid black;
   color: white;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
-  display: inline-block;
-  font-size: 20px;
+  font-size: 24px;
+  width: 150px;
+  margin-left: 8vw;
+  margin-top: 2vw;
 }
+
+.login button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(255, 255, 255, 1);
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.loginbox label {
+  margin-left: 4vw;
+  font-size: 20px;
+  color: rgb(29, 0, 48);
+}
+
+.loginbox input {
+  width:250px;
+  height: 20px;
+  margin-bottom: 10px;
+  margin-left: 75px;
+}
+
 
 

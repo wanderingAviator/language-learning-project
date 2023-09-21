@@ -27,34 +27,69 @@ body {
     font-size: 30px;
 }
 .mainheader h3 {
-    margin-right:10px;
-    display: flex;
-    justify-content: right;
-    align-items: right;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+  margin-right:10px;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  flex: 1;
 }
 
 .mainheader {
     background: rgb(209, 121, 226);
-    font-size: 30px;
+    font-size: 2rem;
     width: 100%;
-  }
+    padding: 1rem;
+    box-sizing: border-box;
+}
 
-  .mainfooter {
-    background: rgb(209, 121, 226);
-    font-size: 30px;
-    width: 100%;
-    position:absolute;
-    bottom:0;
-  }
+.mainfooter {
+  position:absolute;
+  bottom:0;
+  flex: 1;
+  box-sizing: border-box;
+  background: rgb(142, 54, 160);
+  width: 100%;
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+}
 
-  .main button {
-    margin:20px;
-    background-color: rgba(0, 0, 0, 0.26);
-    border: 2px solid black;
-    color: white;
-    padding: 15px;
-    font-size: 20px;
-  }
+.main button {
+  margin:20px;
+  background-color: rgba(0, 0, 0, 0.26);
+  border: 2px solid black;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.main button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(255, 255, 255, 1);
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.main-image-container img {
+  float:'left';
+  margin-right: 200px;
+  margin-top: 2%;
+  border: 2px solid black;
+  width: 25%;
+  height: 25%;
+}
+
+.main-image-container img:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid black;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+}
