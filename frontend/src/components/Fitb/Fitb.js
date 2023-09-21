@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Fitb.css";
+import ReactCountdownClock from "react-countdown-clock";
+import FitbModal from "./FitbModal";
 
 const Fitb = () => {
   const [question, setQuestion] = useState("");
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState(""); // State to store success or error message
-
+  const [completions, setCompletions] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [pause, setPause] = useState(false);
+  const navigate = useNavigate();
   const getQuestion = async () => {
     try {
       // Replace 'language_id' with the actual language ID you want to request.
@@ -25,10 +30,30 @@ const Fitb = () => {
     }
   };
 
+  const timerEnded = () => {
+    setOpenModal(true);
+  };
+
+  const restartTimer = () => {
+    setCompletions((cur) => setCompletions(cur + 1));
+  };
+
+  const handleOnClose = () => {
+    setGuess("");
+    setOpenModal(false);
+    restartTimer();
+  };
+
+  const handleOnDontTryAgain = () => {
+    setOpenModal(false);
+    navigate("/main");
+  };
+
   const handleGuess = () => {
     // Perform a case-insensitive comparison
     if (guess.toLowerCase() === question.answers[0].answer.toLowerCase()) {
       // Correct guess
+      setPause(true);
       setMessage("Correct! "); // Set success message
     } else {
       // Incorrect guess
@@ -42,6 +67,12 @@ const Fitb = () => {
 
   return (
     <div className="fitb-container">
+      <FitbModal
+        open={openModal}
+        onClose={handleOnClose}
+        handleOnClose={handleOnClose}
+        handleOnDontTryAgain={handleOnDontTryAgain}
+      />
       <div className="fitbheader">
         <h1>Yet Another Language Learning App</h1>
       </div>
@@ -49,7 +80,7 @@ const Fitb = () => {
         <div className="fitbquestion">
           <p>{question.prompt}</p>
           <div className="answer-wrap">
-            <input onChange={(e) => setGuess(e.target.value)} />
+            <input onChange={(e) => setGuess(e.target.value)} value={guess} />
           </div>
           <button className="fitbanswer-button" onClick={handleGuess}>
             Check Answer
@@ -60,8 +91,21 @@ const Fitb = () => {
           </div>
           {/* Display Link button on success */}
           {message === "Correct! " && (
-            <Link className="next-question" to="/language/matching">Next Question -></Link>
+            <Link className="next-question" to="/language/matching">
+              Next Question ->
+            </Link>
           )}
+        </div>
+        <div className="clockWrap">
+          <ReactCountdownClock
+            key={completions}
+            seconds={5}
+            color="rgb(255, 0, 0, 0.7)"
+            alpha={0.9}
+            size={300}
+            paused={pause}
+            onComplete={timerEnded}
+          />
         </div>
       </div>
 
