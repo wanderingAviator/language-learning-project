@@ -1,129 +1,143 @@
-  .matchingheader {
-    background: rgb(209, 121, 226);
-    font-size: 30px;
-    width: 100%;
-  }
+.matchingheader {
+  background: rgb(209, 121, 226);
+  font-size: 30px;
+  /* width: 100%; */
+}
 
-  .matchingheader h1 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    height: 60px; 
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 60px;
+.matchingheader h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  /* height: 60px;  */
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
+  padding-top: 1.5rem;
+    
 }
 .matchingheader h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 10px;
-    height: 60px; 
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-}
-.matchingheader h3 {
-    margin-right:10px;
+    margin-right: 1.5rem;
     display: flex;
     justify-content: right;
     align-items: right;
     color: rgb(0, 0, 0);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 1.5rem;
+}
+.matchingheader h3 {
+    margin-right:1.5rem;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
-  .matchingfooter {
-    background-color: rgb(209, 121, 226);
-    font-size: 30px;
-    overflow-x: hidden;
-    /* position:absolute; */
-    width:100%;
-    position: fixed; /* Fix the footer position */
-    bottom: 0; /* Place it at the bottom of the viewport */
-   
-  }
+.matching-footer{
+  flex: 1;
+  box-sizing: border-box;
+  background: rgb(142, 54, 160);
+  font-size: 30px;
+  width: 100%;
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+}
 
-  .matchingfooter button {
-    
-    /* margin:20px; */
-    background-color: rgba(0, 0, 0, 0.26);
-    border: 2px solid black;
-    color: white;
-    padding: 1rem;
-    font-size: 20px;
-  }
+.matching-footer button{
+  background-color: rgba(0, 0, 0, 0.26);
 
-  .matching button {
-    float:left;
-    margin-left:100px;
-    margin-top:65px;
-    width:250px;
-    height:200px;
-    background-color: rgb(255, 255, 255);
-    border: 2px solid black;
-    color: rgb(0, 0, 0);
-    font-size: 40px;
-  }  
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.matching-footer button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(255, 255, 255, 1);
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  cursor: pointer;
+}
+
   
-  .match-card{
-    background-color: gray;
-    width: 15rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 25px;
-    margin: 2rem;
-  }
+.match-card{
+  background-color: rgb(243, 238, 238);
+  width: 15rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 25px;
+  margin: 2rem;
+  transition: background-color 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+}
 
-  .matched-card{
-    background-color: green;
-    width: 15rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 25px;
-    margin: 2rem;
 
-    pointer-events: none;
-    opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
-    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
-  }
+.match-card:hover{
+  cursor: pointer;
+  scale: 1.05;
+  border: 1px solid black;
+  background-color: rgb(205, 202, 202);
+}
 
-  .incorrect-card{
-    background-color: red;
-    width: 15rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 25px;
-    margin: 2rem;
-  }
+.matched-card{
+  background-color: rgb(109, 225, 51);
+  width: 15rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 25px;
+  margin: 2rem;
 
-  .match-card:hover{
-    cursor: pointer;
-    scale: 1.05;
-  }
+  pointer-events: none;
+  opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
+  cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+}
 
-  .match-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 1rem;
-    flex-wrap: wrap;
-  }
+.incorrect-card{
+  background-color: red;
+  width: 15rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 25px;
+  margin: 2rem;
+}
 
-  .matching-container{
-    margin: auto;
-    height:100vh;
- 
-  }
+
+.match-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1rem;
+  flex-wrap: wrap;
+  background-color: #6a3775 ;
+  border-radius: 2rem;
+  
+}
+
+.matching-column{
+  width: 100%;
+  margin: auto;
+}
+
+.matching-container{
+  display:flex;
+  flex-direction: row;
+}
   

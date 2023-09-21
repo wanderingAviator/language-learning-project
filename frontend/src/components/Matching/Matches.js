@@ -6,7 +6,7 @@ export const Matches = ({selected, setSelected ,matches, setCorrectMatches}) => 
         try{
   
           const parsedValue = JSON.parse(e.target.value);
-          console.log(e.target.value)
+        //   console.log(e.target.value)
           setSelected(selected => [...selected, parsedValue]);
         }
         catch (error) {
