@@ -11,7 +11,6 @@ export const MatchUtil =  {
           const j = Math.floor(Math.random() * (i+1));
           [newArray[i], newArray[j]] = [newArray[j], newArray[i]]
         }
-        console.log("New Array: " + newArray)
         setArray(newArray);
     }
 
