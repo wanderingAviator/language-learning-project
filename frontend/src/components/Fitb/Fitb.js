@@ -110,7 +110,7 @@ const Fitb = () => {
           {message === "Correct! " && (
             <div className="successSection">
               <button className="next-question" onClick={goToMatching}>
-                Matching Question >
+                Matching Question {'>'}
               </button>
               <button className="playAgain" onClick={playAgain}>
                 Play again ^

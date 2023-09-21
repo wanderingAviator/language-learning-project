@@ -74,6 +74,23 @@
     height: 5rem;
     align-items: center;
     justify-content: center;
+    border: none;
+    border-radius: 25px;
+  }
+
+  .matched-card{
+    background-color: green;
+    width: 20rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 25px;
+  }
+
+  .match-card:hover{
+    cursor: pointer;
+    scale: 1.05;
   }
 
   .match-row{
