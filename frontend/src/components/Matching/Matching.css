@@ -39,20 +39,23 @@
 }
 
   .matchingfooter {
-    background: rgb(209, 121, 226);
+    background-color: rgb(209, 121, 226);
     font-size: 30px;
-    width: 100%;
-    position:absolute;
+    overflow-x: hidden;
+    /* position:absolute; */
     width:100%;
-    bottom:0;
+    position: fixed; /* Fix the footer position */
+    bottom: 0; /* Place it at the bottom of the viewport */
+   
   }
 
   .matchingfooter button {
-    margin:20px;
+    
+    /* margin:20px; */
     background-color: rgba(0, 0, 0, 0.26);
     border: 2px solid black;
     color: white;
-    padding: 15px;
+    padding: 1rem;
     font-size: 20px;
   }
 
@@ -70,22 +73,39 @@
   
   .match-card{
     background-color: gray;
-    width: 20rem;
-    height: 5rem;
+    width: 15rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: 25px;
+    margin: 2rem;
   }
 
   .matched-card{
     background-color: green;
-    width: 20rem;
-    height: 5rem;
+    width: 15rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: 25px;
+    margin: 2rem;
+
+    pointer-events: none;
+    opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
+    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+  }
+
+  .incorrect-card{
+    background-color: red;
+    width: 15rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 25px;
+    margin: 2rem;
   }
 
   .match-card:hover{
@@ -97,11 +117,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 2rem;
+    margin: 1rem;
     flex-wrap: wrap;
   }
 
   .matching-container{
     margin: auto;
+    height:100vh;
+ 
   }
   
