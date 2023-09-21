@@ -1,5 +1,3 @@
-body {
-}
 .fitb-container {
   min-height: 100vh;
   display: flex;
@@ -25,18 +23,33 @@ body {
 .question-wrap {
   padding: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
+  align-items: stretch;
   height: 100%;
   flex: 2;
 }
 .fitbquestion {
   display: flex;
+  flex: 1;
   flex-direction: column;
   text-align: left;
   padding: 20px;
   font-size: 30px;
   background: rgba(0, 0, 0, 0.26);
   border: 2px solid black;
+}
+.clockWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.react-countdown-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  text-align: center;
 }
 
 .fitbanswer {
@@ -46,18 +59,24 @@ body {
   float: left;
   margin: 75px;
   background-color: rgba(0, 0, 0, 0.26);
-  border: 2px solid rgb(0, 0, 0, 0.22);
+  border: 7px solid rgb(0, 0, 0, 0.7);
   border-radius: 10px;
-  color: white;
+  color: rgb(255, 255, 255, 0.4);
   padding: 50px;
-  font-size: 30px;
-  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out,
+    letter-spacing 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .fitbanswer-button:hover {
   background-color: rgba(0, 0, 0, 1);
-  border: 2px solid rgb(0, 0, 0, 0);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+  border: 7px solid rgb(0, 0, 0, 0);
+  letter-spacing: 5px;
   cursor: pointer;
+  color: rgb(255, 255, 255, 1);
 }
 
 .fitbfooter {
@@ -107,6 +126,9 @@ body {
   line-height: 30px;
   font-size: 25px;
   color: rgb(142, 54, 160);
+  border: 5px solid rgb(142, 54, 160);
+  padding: 5px;
+  border-radius: 10px;
 }
 
 /* Change the border color for all input elements */
@@ -123,8 +145,8 @@ body {
 
 .next-question {
   text-decoration: none;
-  color: rgb(142, 54, 160);
+  color: #8e36a0;
 }
-.next-question:hover{
+.next-question:hover {
   text-decoration: underline;
 }
