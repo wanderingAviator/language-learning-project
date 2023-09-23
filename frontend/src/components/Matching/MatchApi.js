@@ -5,7 +5,7 @@ const URL = `http://localhost:8080/api/matching/`
 
 export const MatchApi = {
 
-    getLanguage: async (setLanguage) => {
+    getLanguage: async () => {
       try {
         const jwtToken = decodeJWT(localStorage.getItem("jwtToken"));
         const response = await fetch(`http://localhost:8080/api/user/${jwtToken.userId}`);
@@ -14,7 +14,6 @@ export const MatchApi = {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setLanguage(data.language);
         return data.language.id;
       } catch (error) {
         console.error('Error fetching questions:', error);
@@ -31,20 +30,21 @@ export const MatchApi = {
               throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            console.log(data);
             setQuestions(data);
-      
-            data.answers.map((answer) => {
-              const leftValue = {
-                id: answer.id,
-                match: answer.leftMatch
-              }
-              const rightValue = {
-                id: answer.id,
-                match: answer.rightMatch
-              }
-              MatchUtil.addMatches(leftValue, setLeftMatches);
-              MatchUtil.addMatches(rightValue, setRightMatches);
-            });
+
+            const leftMatchesArray = data.answers.map((answer) => ({
+              id: answer.id,
+              match: answer.leftMatch,
+            }));
+            
+            const rightMatchesArray = data.answers.map((answer) => ({
+              id: answer.id,
+              match: answer.rightMatch,
+            }));
+            
+            setLeftMatches(leftMatchesArray);
+            setRightMatches(rightMatchesArray);
       
       
             setCanShow(true);
