@@ -6,7 +6,6 @@ export const Matches = ({selected, setSelected ,matches, setCorrectMatches}) => 
         try{
   
           const parsedValue = JSON.parse(e.target.value);
-        //   console.log(e.target.value)
           setSelected(selected => [...selected, parsedValue]);
         }
         catch (error) {
@@ -46,7 +45,6 @@ export const Matches = ({selected, setSelected ,matches, setCorrectMatches}) => 
 
     useEffect(()=> {
 
-        console.log(selected);
         let isTimeToCheck = selected.length % 2 === 0 && selected.length !== 0;
         if(isTimeToCheck){
             checkMatch();
