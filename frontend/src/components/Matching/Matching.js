@@ -68,6 +68,7 @@ const Matching = () => {
 
     useEffect(() => {
         console.log("fetchData() rerender");
+        setCanShow(false);
         fetchData();
     }, [completions]);
 
